@@ -1,0 +1,280 @@
+@import "../bourbon/bourbon";
+@import "../neat/neat";
+
+// Modules and Variables
+@import "partials/base";
+
+* {
+    font-family: $base-font-family;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/*** GENERAL LAYOUT + NAVIGATION ***/
+
+header {
+    @include span-columns(6, table);
+    @include position(fixed, 0 null 0 0);
+    height: 100%;
+    background: url('../../wire-frame-680431_640.png') rgba(255,249,87,.95);
+    background-position: right bottom;
+     background-repeat: no-repeat;
+    z-index: 1;
+    ul {
+        @include fill-parent();
+        height: 100vh;
+        list-style-type: none;
+        text-align: left;
+        @include pad(4em 1em);
+        background: $contrast;
+        li {
+            font-size: 400%;
+            font-weight: $light;
+            a {
+                color: #414141;
+                text-decoration: none;
+            }
+            @include media(min-width 320px max-width 600px, 6) {
+    font-size: 150%;
+    font-weight: $regular;
+   }
+        }
+        @include media(min-width 320px max-width 600px, 6) {
+    height: 50vh;
+    @include pad(2em 1em);
+   }
+    }
+    #copy {
+        @include fill-parent();
+        @include position(absolute, null 0 20px null);
+        @include pad(0em);
+        background: $dark-content-ov;
+        text-align: center;
+        z-index: 100;
+    }
+    @include media(min-width 320px max-width 600px, 6) {
+    @include span-columns(6, table);
+    height: 50vh;
+   }
+}
+
+section {
+    @include span-columns(6, table);
+    float: right;
+    height: 100vh;
+    overflow: hidden;
+    background: url('../../wire-frame-680431_640.png') $content-bg;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    @include media(min-width 320px max-width 600px, 6) {
+    @include span-columns(6, table);
+    height: 50vh;
+    margin-top: 50vh;
+   }
+}
+
+/*** MAIN CONTENT PANEL LAYOUT ***/
+
+.panel {
+    height: 100vh;
+    z-index:1;
+    -webkit-transform: translateZ( 0 );
+    transform: translateZ( 0 );
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    h1 {
+        display: block;
+        text-align: right;
+        font-size: 1200%;
+        color: $display-content;
+        font-weight: $regular;
+        z-index: 1;
+        @include media(min-width 320px max-width 600px, 6) {
+        font-size: 300%;
+   }
+    }
+    div {
+    @include fill-parent();
+    @include position(absolute, 30% null null null);
+    color: $main-content;
+    height: 70%;
+    text-align: left;
+    font-weight: $light;
+    z-index: 8;
+    h3 {
+        margin-left: 15px;
+    }
+    p {
+        @include pad(.5em 0em);
+        margin:  0 15px;
+        font-size: 115%;
+        font-weight: $regular;
+        @include media(min-width 320px max-width 600px, 6) {
+        font-size: 100%;
+   }
+        }
+    @include media(min-width 320px max-width 600px, 6) {
+    @include position(absolute, 0% null null null);
+    height: 100%;
+   }
+    }
+    @include media(min-width 320px max-width 600px, 6) {
+        height: 50vh;
+   }
+}
+
+.bottomPanel {
+    @include fill-parent();
+    @include position(absolute, null 0 20px null);
+    @include pad(0em);
+    background: $dark-content-ov;
+    z-index: 100;
+    @include media(min-width 320px max-width 600px, 6) {
+    @include position(absolute, null 0 0 null);
+    background: transparent;
+   }
+
+}
+
+/*** CONTENT PANEL TYPOGRAPHY ***/
+
+#mainText,
+#workText {
+    font-weight: $bold;
+    color: $contrast;
+}
+
+#mainText {
+    font-size: 250%;
+    @include media(min-width 320px max-width 600px, 6) {
+    font-size: 150%;
+    @include pad(1em 0 0 0);
+   }
+}
+
+#workText {
+    font-size: 150%;
+    @include media(min-width 320px max-width 600px, 6) {
+    font-size: 130%;
+    @include pad(1em 0 0 0);
+   }
+}
+
+#projects p:first-of-type::after {
+    content:"new!";
+    color: $contrast;
+    @include pad(0.1em);
+    vertical-align: super;
+    font-size: 70%;
+}
+
+#me h1:before,
+#how-i-work h1:before,
+#projects h1:before,
+#pathways h1:before
+{
+    font-size: 14px;
+    color: $contrast;
+    text-transform: uppercase;
+    @include media(min-width 320px max-width 600px, 6) {
+    font-size: 10px;
+   }
+}
+
+#me h1:before {
+    content: 'About';
+}
+
+#how-i-work h1:before {
+    content: 'How I Work';
+}
+
+#projects h1:before {
+    content: 'Projects';
+}
+
+#pathways h1:before {
+    content: 'Pathways';
+}
+
+
+
+/*
+ *Scrolling
+ */
+
+a[ id= "me" ]:target ~ #main article.panel {
+    -webkit-transform: translateY( 0px);
+    -ms-transform: translateY( 0px );
+        transform: translateY( 0px );
+    @include media(min-width 320px max-width 600px, 6) {
+    -webkit-transform: translateY( 0);
+    -ms-transform: translateY( 0 );
+        transform: translateY( 0 );
+   }
+}
+
+
+a[ id= "me" ]:target ~ .nav li [href="#me"]:after {
+    content:' //     01';
+    color: $main-content;
+}
+
+.none {
+    font-weight: bold;
+}
+
+.none:after {
+    content:' //     01';
+    color: $main-content;
+}
+
+
+a[ id= "how-i-work" ]:target ~ #main article.panel {
+    -webkit-transform: translateY( -100% );
+    -ms-transform: translateY( -100% );
+        transform: translateY( -100% );
+}
+
+a[ id= "how-i-work" ]:target ~ .nav li [href="#how-i-work"],
+a[ id= "projects" ]:target ~ .nav li [href="#projects"],
+a[ id= "pathways" ]:target ~ .nav li [href="#pathways"],
+a[ id= "me" ]:target ~ .nav li [href="#me"]
+{
+      font-weight: $regular;
+}
+
+a[ id= "how-i-work" ]:target ~ .nav li [href="#how-i-work"]:after {
+      content:' //     02';
+     color: $main-content;
+}
+
+a[ id= "projects" ]:target ~ #main article.panel {
+    -webkit-transform: translateY( -200% );
+    -ms-transform: translateY( -200% );
+        transform: translateY( -200% );
+}
+
+
+a[ id= "projects" ]:target ~ .nav li [href="#projects"]:after {
+    content:' //     03';
+    color: $main-content;
+}
+
+a[ id= "pathways" ]:target ~ #main article.panel {
+    -webkit-transform: translateY( -300% );
+    -ms-transform: translateY( -300% );
+        transform: translateY( -300% );
+}
+
+a[ id= "pathways" ]:target ~ .nav li [href="#pathways"]:after {
+     content:' //     04';
+    color: $main-content;
+}

@@ -1,0 +1,19 @@
+
+$main-content: #ffffff;
+$display-content: #fafafa;
+
+// MAIN CONTENT BG COLOR VARIATIONS
+
+$dark-bg: rgba(0,5,4,.75);
+$light-bg: rgba(103, 106, 106, 0.75);
+
+$content-bg: $dark-bg;
+$dark-content-ov: rgba(0,0,0,.1);
+
+// CONTRAST COLOR VARIATIONS FOR STATIC PANEL
+
+$yellow-contrast: rgba(255,249,87,.85);
+$green-contrast: rgba(53, 195, 118, 0.85);
+$red-contrast: rgba(212, 42, 42, 0.84);
+
+$contrast: $yellow-contrast;
