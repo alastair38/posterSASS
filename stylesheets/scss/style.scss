@@ -53,7 +53,8 @@ header {
         @include fill-parent();
         @include position(absolute, null 0 20px null);
         @include pad(0em);
-        background: $dark-content-ov;
+        background: $contact-bg;
+        color: $yellow-contrast;
         text-align: center;
         z-index: 100;
     }
@@ -205,10 +206,21 @@ section {
 }
 
 
+/*** CONTACT + ABOUT LINKS ***/
 
-/*
- *Scrolling
- */
+#about a, #copy a {
+    color: $main-content;
+    text-decoration: none;
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+#copy a {
+    padding: 1em;
+}
+
+/*** SCROLLING ***/
 
 a[ id= "me" ]:target ~ #main article.panel {
     -webkit-transform: translateY( 0px);
@@ -228,7 +240,7 @@ a[ id= "me" ]:target ~ .nav li [href="#me"]:after {
 }
 
 .none {
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 .none:after {
@@ -248,7 +260,7 @@ a[ id= "projects" ]:target ~ .nav li [href="#projects"],
 a[ id= "pathways" ]:target ~ .nav li [href="#pathways"],
 a[ id= "me" ]:target ~ .nav li [href="#me"]
 {
-      font-weight: $regular;
+      text-decoration: underline;
 }
 
 a[ id= "how-i-work" ]:target ~ .nav li [href="#how-i-work"]:after {
